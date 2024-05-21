@@ -1,9 +1,8 @@
-
 import './App.css'
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import {AppBar} from '../src/component/AppBar'
-import { SignUp } from "../src/component/SignUp";
+import {AppBar} from './component/AppBar'
+import {SignUp} from './component/SignUp';
 
 function App() {
 
