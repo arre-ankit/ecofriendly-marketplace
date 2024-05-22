@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser')
@@ -13,6 +14,6 @@ app.use(bodyParser.json());
 app.use("/user", userRouter)
 
 //Connect to mongoDb
-mongoose.connect('mongodb+srv://pratiknand5:Uy3KiRbVFaA4uMCj@cluster0.eehxhmf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
-
+const uri = process.env.MONGOOSE_URI;
+mongoose.connect(uri);
 app.listen(3000, () => console.log('Server running on port 3000'));

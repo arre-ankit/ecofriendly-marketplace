@@ -1,9 +1,11 @@
 const express = require('express');
 const { User, Item } = require("../db");
 const router = express.Router();
-const SECRET = "pratik"
+require('dotenv').config();
+const SECRET = process.env.JWT_SECRET;
+
 const jwt = require('jsonwebtoken');
-const { authenticateJwt } = require('../middleware/auth');
+const { authenticateJwt } = require('../middleware/auth.js');
 
 //Signup User
 router.post('/signup', async (req, res) => {
@@ -52,7 +54,7 @@ router.post('/signup', async (req, res) => {
     const item = await Item.findById(req.params.itemId);
     console.log(item);
     if (item) {
-      const user = await User.findOne({ email: req.user.email });
+      const user = await User.findOne({ email: req.body.publishedBy });
       if (user) {
         user.purchasedItems.push({ item: item._id ,  itemNumber });
         await user.save();

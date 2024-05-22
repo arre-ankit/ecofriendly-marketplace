@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
-const SECRET = "pratik"
+require('dotenv').config();
+const SECRET = process.env.JWT_SECRET;
 
 // const authenticateJwt = (req, res, next) => {
 //   const authHeader = req.headers.authorization;
